@@ -1,0 +1,128 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+* {
+    font-family: "Poppins", sans-serif;
+    padding: 0;
+    margin: 0;
+    scroll-padding-top: 2rem;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+:root {
+    --main-color: #81e68f;
+    --text-color: #171427;
+    --bg-color: #fff;
+    --red: #f00;
+}
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+.container{
+    max-width: 1068px;
+    margin: auto;
+    width: 100%;
+}
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--bg-color);
+    box-shadow: 0 1px 6px hsl(0 4% 15% / 10%);
+    z-index: 100;
+}
+.nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+.logo{
+    margin-left: 2%;
+    font-size: 1.1rem;
+    color: var(--text-color);
+    font-weight: 400;
+}
+#back-icon{
+    margin-right: 2%;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--text-color);
+}
+h1{
+    font-size: 50px;
+    text-align: center;
+    margin: 10rem 0 8rem;
+}
+section{
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+   text-align: center;
+   margin-bottom: 30rem;
+}
+label{
+   font-size: 20px;
+}
+.name{
+    margin-right: 0.3rem;
+    border-radius: 5px;
+    margin-left: 0.4rem;
+    border: 1px solid;
+}
+.password{
+    margin-right: 0.3rem;
+    border-radius: 5px;
+    margin-left: 0.8rem;
+    border: 1px solid;
+}
+.submit{
+    padding: 12px 3.9rem;
+    margin-left: 6.5rem;
+    border: none;
+    background-color: var(--main-color);
+    color: var(--bg-color);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 150ms;
+}
+.submit:hover{
+    background-color: var(--text-color);
+}
+footer {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 20px 0;
+    font-size: 1.1rem;
+    box-shadow: 1px 0 6px hsl(0 4% 15% / 10%);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    z-index: -1;
+    text-align: center;
+    padding-bottom: 1%;
+}
+a{
+    font-size: 0.8rem;
+    color: var(--text-color);
+}
