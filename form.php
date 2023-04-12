@@ -20,7 +20,7 @@
 	</header>
     <section id="contact">
         <h1>Login</h1>
-        <form method="post" action="<?php echo $_SERVER["PHP_SELF"];?>">
+        <form action="formhandeling.php" method="GET">
             <label for="name">Username:</label>
             <input class="name" type="text" id="name" name="name">
             <span style="color: #F00">*</span>
@@ -43,6 +43,3 @@
 	</footer>
 </body>
 </html>
-<?php
-
-?>

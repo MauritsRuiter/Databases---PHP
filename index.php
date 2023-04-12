@@ -79,12 +79,12 @@
 			try {
 			$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 			$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-			$stmt = $conn->prepare("SELECT name, price, img FROM product");
+			$stmt = $conn->prepare("SELECT id, name, price, img FROM product");
 			$stmt->execute();
 
 			while ($row = $stmt->fetch()) {
 				echo '<div class="product-box">';
-				echo '<img class="product-img" src="'. $row['img'].' ">';
+				echo '<a href="product'.$row['id'].'.php"><img class="product-img" src="'. $row['img'].' "></a>';
 				echo '<h2 class="product-title"> '.$row['name'].' </h2>';
 				echo '€'.$row['price']. "\n";
 				echo '<i class="bx bx-shopping-bag add-cart"></i>';
