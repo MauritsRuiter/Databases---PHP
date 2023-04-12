@@ -224,12 +224,15 @@ header{
     cursor: pointer;
     border-radius: 5px 0px 5px 0px;
     cursor: pointer;
-    transition: all 40ms;
+    transition: all 150ms;
 }
 .add-cart:hover{
     background: hsl(249, 32%, 17%);
     padding: 1rem 1rem;
     font-size: 1.2rem;
+}
+.add-cart:active{
+    background-color: #000;
 }
 footer {
     left: 0;

@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Dripstore</title>
 	<!-- CSS link -->
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/indexstyle.css">
 	<!-- Boxicons link -->
 	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
@@ -52,89 +52,57 @@
 		<!-- Content -->
 		<div class="shop-content">
 			<!-- Box 1 -->
-			<div class="product-box">
-				<img src="img/product1.jpg" alt="" class="product-img">
-				<h2 class="product-title">AEROREADY SHIRT</h2>
-				<span class="price">&euro; 25</span>
-				<i class='bx bx-shopping-bag add-cart'></i>
-			</div>
-			<!-- Box 2 -->
-			<div class="product-box">
-				<img src="img/product2.jpg" alt="" class="product-img">
-				<h2 class="product-title">WIRELESS EARBUDS</h2>
-				<span class="price">&euro; 100</span>
-				<i class='bx bx-shopping-bag add-cart'></i>
-			</div>
-			<!-- Box 3 -->
-			<div class="product-box">
-				<img src="img/product3.jpg" alt="" class="product-img">
-				<h2 class="product-title">HOODED PARKA</h2>
-				<span class="price">&euro; 45</span>
-				<i class='bx bx-shopping-bag add-cart'></i>
-			</div>
-			<!-- Box 4 -->
-			<div class="product-box">
-				<img src="img/product4.jpg" alt="" class="product-img">
-				<h2 class="product-title">STRAW METAL BOTTLE</h2>
-				<span class="price">&euro; 24,95</span>
-				<i class='bx bx-shopping-bag add-cart'></i>
-			</div>
-			<!-- Box 5 -->
-			<div class="product-box">
-				<img src="img/product5.jpg" alt="" class="product-img">
-				<h2 class="product-title">METAL SUNGLASSES</h2>
-				<span class="price">&euro; 50</span>
-				<i class='bx bx-shopping-bag add-cart'></i>
-			</div>
-			<!-- Box 6 -->
-			<div class="product-box">
-				<img src="img/product6.jpg" alt="" class="product-img">
-				<h2 class="product-title">BACK HAT</h2>
-				<span class="price">&euro; 50</span>
-				<i class='bx bx-shopping-bag add-cart'></i>
-			</div>
-			<!-- Box 7 -->
-			<div class="product-box">
-				<img src="img/product7.jpg" alt="" class="product-img">
-				<h2 class="product-title">BACKPACK</h2>
-				<span class="price">&euro; 70</span>
-				<i class='bx bx-shopping-bag add-cart'></i>
-			</div>
-			<!-- Box 8 -->
-			<div class="product-box">
-				<img src="img/product8.jpg" alt="" class="product-img">
-				<h2 class="product-title">ULTRABOOST 22</h2>
-				<span class="price">&euro; 45</span>
-				<i class='bx bx-shopping-bag add-cart'></i>
-			</div>
-			<!-- Box 9 -->
-			<div class="product-box">
-				<img src="img/product9.jpg" alt="" class="product-img">
-				<h2 class="product-title">BLACK HAT</h2>
-				<span class="price">&euro; 30</span>
-				<i class='bx bx-shopping-bag add-cart'></i>
-			</div>
-			<!-- Box 10 -->
-			<div class="product-box">
-				<img src="img/product10.jpg" alt="" class="product-img">
-				<h2 class="product-title">SHORTS</h2>
-				<span class="price">&euro; 19,95</span>
-				<i class='bx bx-shopping-bag add-cart'></i>
-			</div>
-			<!-- Box 11 -->
-			<div class="product-box">
-				<img src="img/product11.jpg" alt="" class="product-img">
-				<h2 class="product-title">GLOVES</h2>
-				<span class="price">&euro; 15</span>
-				<i class='bx bx-shopping-bag add-cart'></i>
-			</div>
-			<!-- Box 12 -->
-			<div class="product-box">
-				<img src="img/product12.jpg" alt="" class="product-img">
-				<h2 class="product-title">SUMMER HAT</h2>
-				<span class="price">&euro; 25</span>
-				<i class='bx bx-shopping-bag add-cart'></i>
-			</div>
+			<?php
+				class TableRows extends RecursiveIteratorIterator {
+				function __construct($it) {
+					parent::__construct($it, self::LEAVES_ONLY);
+				}
+
+				function current() {
+					return "<td style='width:150px;border:1px solid black;'>" . parent::current(). "</td>";
+				}
+
+				function beginChildren() {
+					echo "<tr>";
+				}
+
+				function endChildren() {
+					echo "</tr>" . "\n";
+				}
+			}
+
+			$servername = "localhost";
+			$username = "root";
+			$password = "";
+			$dbname = "module_8";
+
+			try {
+			$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+			$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			$stmt = $conn->prepare("SELECT name, price, img FROM product");
+			$stmt->execute();
+
+			while ($row = $stmt->fetch()) {
+				echo '<div class="product-box">';
+				echo '<img class="product-img" src="'. $row['img'].' ">';
+				echo '<h2 class="product-title"> '.$row['name'].' </h2>';
+				echo '€'.$row['price']. "\n";
+				echo '<i class="bx bx-shopping-bag add-cart"></i>';
+				echo '</div>';
+			}
+
+			// set the resulting array to associative
+			$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+			foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) {
+				echo $v;
+			}
+			} catch(PDOException $e) {
+			echo "Error: " . $e->getMessage();
+			}
+			$conn = null;
+			echo "</table>";
+
+			?>
 		</div>
 	</section>
 	<a href="form.php" class='bx bxs-user' id="user-icon"></a>
@@ -149,42 +117,5 @@
 		<a href="#"> Terms of Service</a>
 	</footer>
 	<script defer src="script/script.js"></script>
-
-<?php
-	//Vars
-	$log_statement = "Connected successfully to database";
-	$log_statement2 = "New records created successfully";
-	$servername = "localhost";
-	$username = "root";
-	$password = "";
-
-	//Make console_log to be able to log instead of doc write
-	function console_log($output, $with_script_tags = true) {
-		$js_code = 'console.log(' . json_encode($output, JSON_HEX_TAG) . 
-	');';
-		if ($with_script_tags) {
-			$js_code = '<script>' . $js_code . '</script>';
-		}
-		echo $js_code;
-	}
-	//Connecting code to database
-	try {
-	$conn = new PDO("mysql:host=$servername;dbname=module_8", $username, $password);
-	// set the PDO error mode to exception
-	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	//Succes Message
-	console_log($log_statement);
-	} catch(PDOException $e) {
-	//Failed Message
-	echo "Connection failed: " . $e->getMessage();
-	//Inserting data to database
-	$sql = "INSERT INTO MyGuests (firstname, lastname, email)
-	VALUES ('John', 'Doe', 'john@example.com')";
-	// use exec() because no results are returned
-	$conn->exec($sql);
-	console_log($log_statement2);
-	}
-?>
 </body>
-
 </html>

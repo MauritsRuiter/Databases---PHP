@@ -82,6 +82,9 @@ section{
 label{
    font-size: 20px;
 }
+input{
+    padding-left: 4px;
+}
 .name{
     margin-right: 0.3rem;
     border-radius: 5px;
@@ -95,8 +98,8 @@ label{
     border: 1px solid;
 }
 .submit{
-    padding: 12px 3.9rem;
-    margin-left: 6.5rem;
+    padding: 12px 4.2rem;
+    margin-left: 5.7rem;
     border: none;
     background-color: var(--main-color);
     color: var(--bg-color);

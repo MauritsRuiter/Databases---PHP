@@ -13,7 +13,7 @@
 	<header>
 		<!-- Nav -->
 		<div class="nav container">
-			<a href="#" class="logo">Dripstore</a>
+			<a href="http://localhost/module_8/Databases%20&%20PHP" class="logo">Dripstore</a>
 			<!-- Back Icon  -->
             <a href="index.php" class='bx bx-arrow-back' id="back-icon"></a>
         </div>
