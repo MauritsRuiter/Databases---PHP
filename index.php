@@ -84,7 +84,7 @@
 
 			while ($row = $stmt->fetch()) {
 				echo '<div class="product-box">';
-				echo '<a href="product'.$row['id'].'.php"><img class="product-img" src="'. $row['img'].' "></a>';
+				echo '<a href="product.php'.'?id='.$row['id'].'"><img class="product-img" src="'. $row['img'].' "></a>';
 				echo '<h2 class="product-title"> '.$row['name'].' </h2>';
 				echo '€'.$row['price']. "\n";
 				echo '<i class="bx bx-shopping-bag add-cart"></i>';

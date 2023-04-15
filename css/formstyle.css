@@ -70,7 +70,7 @@ header{
 h1{
     font-size: 50px;
     text-align: center;
-    margin: 10rem 0 8rem;
+    margin: 15rem 0 8rem;
 }
 section{
     /* display: flex;
@@ -100,6 +100,7 @@ input{
 .submit{
     padding: 12px 4rem;
     margin-left: 6rem;
+    margin-bottom: 22rem;
     border: none;
     background-color: var(--main-color);
     color: var(--bg-color);
@@ -112,8 +113,7 @@ input{
 .submit:hover{
     background-color: var(--text-color);
 }
-footer {
-    position: fixed;
+footer{
     left: 0;
     bottom: 0px;
     width: 100%;

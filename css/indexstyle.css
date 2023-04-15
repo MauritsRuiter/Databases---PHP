@@ -176,16 +176,16 @@ header{
     font-size: 1.5rem;
     font-weight: 600;
     text-align: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2.5rem;
 }
 .shop{
-    margin-top: 2rem;
+    margin-top: 2.5rem;
 }
 /* Shop Content */
 .shop-content{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, auto));
-    gap: 1.5rem;
+    gap: 2rem;
 }
 .product-box{
     position: relative;
@@ -221,7 +221,6 @@ header{
     background: var(--text-color);
     color: var(--bg-color);
     padding: 10px;
-    cursor: pointer;
     border-radius: 5px 0px 5px 0px;
     cursor: pointer;
     transition: all 150ms;

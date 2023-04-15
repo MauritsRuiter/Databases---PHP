@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Productspecificatie</title>
     <link rel="stylesheet" href="css/productstyle.css">
 	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
@@ -19,24 +19,7 @@
         </div>
 	</header>
    <?php
-	class TableRows extends RecursiveIteratorIterator {
-		function __construct($it) {
-			parent::__construct($it, self::LEAVES_ONLY);
-		}
-
-		function current() {
-			return "<td style='width:150px;border:1px solid black;'>" . parent::current(). "</td>";
-		}
-
-		function beginChildren() {
-			echo "<tr>";
-		}
-
-		function endChildren() {
-			echo "</tr>" . "\n";
-		}
-	}
-
+	$productid = $_GET['id'];
 	$servername = "localhost";
 	$username = "root";
 	$password = "";
@@ -45,15 +28,15 @@
 	try {
 	$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	$stmt = $conn->prepare("SELECT id, name, price, img FROM product WHERE id=8");
+	$stmt = $conn->prepare("SELECT id, name, price, img FROM product WHERE id=$productid");
 	$stmt->execute();
 
 	while ($row = $stmt->fetch()) {
 		echo '<div class="product-box">';
-		echo '<a href="product.php'.$row['id'].'"><img class="product-img" src="'. $row['img'].' "></a>';
-		echo '<h2 class="product-title"> '.$row['name'].' </h2>';
-		echo '€'.$row['price']. "\n";
-		echo '<i class="bx bx-shopping-bag add-cart"></i>';
+		echo '<img class="product-img" src="'. $row['img'].' ">';
+		echo '<h1 class="product-title"> '.$row['name'].' </h1>';
+		echo '<h3 class="price"> €'.$row['price']. '</h2>';
+		echo '<i class="bx bx-shopping-bag add-cart"></i>';	
 		echo '</div>';
 	}
 
