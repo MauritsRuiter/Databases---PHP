@@ -20,13 +20,13 @@
 	</header>
     <section id="contact">
         <h1>Login</h1>
-        <form action="formhandeling.php" method="GET">
-            <label for="name">Username:</label>
-            <input class="name" type="text" id="name" name="name">
+        <form action="loginstatus.php" method="POST">
+            <label for="name">Username: = 'jan'</label>
+            <input class="name" type="text" id="username-id" name="username">
             <span style="color: #F00">*</span>
             <br><br>
-            <label for="password">Password:</label>
-            <input class="password" type="password" id="password" name="password">
+            <label for="password">Password: = 'ty6ty6ty6'</label>
+            <input class="password" type="password" id="password-id" name="password">
             <span style="color: #F00">*</span>
             <br><br>
             <input class="submit" type="submit" value="Login">
